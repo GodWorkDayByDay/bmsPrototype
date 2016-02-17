@@ -1,0 +1,6 @@
+* 仕様書
+** 環境
+- C# MonoGame
+- Visual Studio Community
+
+
