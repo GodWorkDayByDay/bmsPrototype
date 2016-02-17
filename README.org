@@ -1,6 +1,11 @@
 * 仕様書
 ** 環境
 - C# MonoGame
-- Visual Studio Community
+- Visual Studio 2015 Community
 
-
+* スケジュール
+** 予定
+- 仕様決定
+- コーディング
+** 履歴
+- <2016-02-17 水> project作成
