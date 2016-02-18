@@ -14,3 +14,7 @@
 - コーディング
 ** 履歴
 - <2016-02-17 水> project作成
+* メモ
+** Spritebatch
+** Content pipeline
+
