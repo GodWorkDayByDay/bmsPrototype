@@ -1,8 +1,13 @@
 * 仕様書
 ** 環境
-- C# MonoGame
+- C# MonoGame(Unityの方が良い？)
 - Visual Studio 2015 Community
-
+** 画面遷移
+- タイトル
+- モード選択
+- 選曲
+- プレイ
+- リザルト
 * スケジュール
 ** 予定
 - 仕様決定
