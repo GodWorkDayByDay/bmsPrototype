@@ -1,6 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+//using System;
+//using System.IO;
+
 
 namespace bmsPrototype
 {
@@ -12,10 +15,17 @@ namespace bmsPrototype
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        Texture2D texture; //to write texture
+
+        /// <summary>
+        /// constructor
+        /// </summary>
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            graphics.PreferredBackBufferWidth = 1200;
+            graphics.PreferredBackBufferHeight = 800;
         }
 
         /// <summary>
@@ -27,6 +37,7 @@ namespace bmsPrototype
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            base.Window.Title = "Mono BMS Prototype";
 
             base.Initialize();
         }
@@ -34,6 +45,7 @@ namespace bmsPrototype
         /// <summary>
         /// LoadContent will be called once per game and is the place to load
         /// all of your content.
+        /// Load graphics
         /// </summary>
         protected override void LoadContent()
         {
@@ -41,11 +53,15 @@ namespace bmsPrototype
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            //FileStream file = System.IO.File.OpenRead("C:\\Users\\taniguchi\\Documents\\Visual Studio 2015\\Projects\\bmsPrototype\\bmsPrototype\\data\\test.png");
+            // this.texture = Texture2D.FromStream(this.GraphicsDevice, file);
+            this.texture = Content.Load<Texture2D>("data/test");
         }
 
         /// <summary>
         /// UnloadContent will be called once per game and is the place to unload
         /// game-specific content.
+        /// Unload graphics
         /// </summary>
         protected override void UnloadContent()
         {
@@ -76,6 +92,11 @@ namespace bmsPrototype
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+            spriteBatch.Begin();
+            spriteBatch.Draw(texture, new Vector2(0.0f, 0.0f), Color.White);
+            spriteBatch.Draw(texture, new Vector2(0.0f, 200.0f), Color.Green);
+            spriteBatch.Draw(texture, new Vector2(0.0f, 400.0f), new Color(0x80, 0xFF, 0x80));
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }
