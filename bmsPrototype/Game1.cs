@@ -15,7 +15,20 @@ namespace bmsPrototype
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        private Scene scene;
+        SceneTitle title = new SceneTitle();//todo
+
         Texture2D texture; //to write texture
+        Vector2 pos; //position of texture
+
+        public enum SCENE
+        {
+            TITLE,
+            MODESEL,
+            MUSICSEL,
+            GAMEMAIN,
+            RESULT,
+        };
 
         /// <summary>
         /// constructor
@@ -26,6 +39,11 @@ namespace bmsPrototype
             Content.RootDirectory = "Content";
             graphics.PreferredBackBufferWidth = 1200;
             graphics.PreferredBackBufferHeight = 800;
+            graphics.PreferMultiSampling = false; //antialiasing(multisampling)
+            graphics.IsFullScreen = false; //fullscreen
+            this.IsMouseVisible = true; //mouse visible
+            this.pos.X = 0;
+            this.pos.Y = 100;
         }
 
         /// <summary>
@@ -38,6 +56,7 @@ namespace bmsPrototype
         {
             // TODO: Add your initialization logic here
             base.Window.Title = "Mono BMS Prototype";
+            changeScene(SCENE.TITLE);
 
             base.Initialize();
         }
@@ -79,9 +98,16 @@ namespace bmsPrototype
                 Exit();
 
             // TODO: Add your update logic here
+            KeyboardState keyState = Keyboard.GetState();
+            if (keyState.IsKeyDown(Keys.Left)) pos.X -= 4;
+            if (keyState.IsKeyDown(Keys.Right)) pos.X += 4;
+            if (keyState.IsKeyDown(Keys.Up)) pos.Y -= 4;
+            if (keyState.IsKeyDown(Keys.Down)) pos.Y += 4;
 
             base.Update(gameTime);
         }
+
+
 
         /// <summary>
         /// This is called when the game should draw itself.
@@ -93,12 +119,26 @@ namespace bmsPrototype
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            spriteBatch.Draw(texture, new Vector2(0.0f, 0.0f), Color.White);
-            spriteBatch.Draw(texture, new Vector2(0.0f, 200.0f), Color.Green);
-            spriteBatch.Draw(texture, new Vector2(0.0f, 400.0f), new Color(0x80, 0xFF, 0x80));
+            spriteBatch.Draw(texture, new Vector2(this.pos.X, this.pos.Y), Color.White);
+            //spriteBatch.Draw(texture, new Vector2(0.0f, 200.0f), Color.Green);
+            //spriteBatch.Draw(texture, new Vector2(0.0f, 400.0f), new Color(0x80, 0xFF, 0x80));
             spriteBatch.End();
+            this.scene.Draw();
 
             base.Draw(gameTime);
+        }
+
+        void changeScene(SCENE s)
+        {
+            
+            switch(s)
+            {
+                case SCENE.TITLE:
+                    this.scene = this.title;
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

@@ -17,4 +17,5 @@
 * メモ
 ** Spritebatch
 ** Content pipeline
-
+** stateパターン(GoF)
+画面遷移に利用
