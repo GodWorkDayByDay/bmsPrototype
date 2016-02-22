@@ -1,6 +1,6 @@
 * 仕様書
 ** 環境
-- C# MonoGame(Unityの方が良い？)
+- C# MonoGame
 - Visual Studio 2015 Community
 ** 画面遷移
 - タイトル
@@ -18,4 +18,6 @@
 ** Spritebatch
 ** Content pipeline
 ** stateパターン(GoF)
+画面遷移に利用
+** singletonパターン(GoF)
 画面遷移に利用
