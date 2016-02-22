@@ -16,11 +16,11 @@
 - <2016-02-17 水> project作成
 * メモ
 色々なメモ
-** Spritebatch
-飛び回る妖精？
-** Content pipeline
-インデントされない
-** stateパターン(GoF)
-画面遷移に利用
-** singletonパターン(GoF)
-画面遷移に利用
+*** Spritebatch
+ 飛び回る妖精？
+*** Content pipeline
+ インデントされない
+*** stateパターン(GoF)
+ 画面遷移に利用
+*** singletonパターン(GoF)
+ 画面遷移に利用
