@@ -15,12 +15,6 @@ namespace bmsPrototype
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        private Scene scene;
-        SceneTitle title = new SceneTitle();//todo
-
-        Texture2D texture; //to write texture
-        Vector2 pos; //position of texture
-
         public enum SCENE
         {
             TITLE,
@@ -37,13 +31,10 @@ namespace bmsPrototype
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            graphics.PreferredBackBufferWidth = 1200;
-            graphics.PreferredBackBufferHeight = 800;
             graphics.PreferMultiSampling = false; //antialiasing(multisampling)
             graphics.IsFullScreen = false; //fullscreen
             this.IsMouseVisible = true; //mouse visible
-            this.pos.X = 0;
-            this.pos.Y = 100;
+
         }
 
         /// <summary>
@@ -56,7 +47,10 @@ namespace bmsPrototype
         {
             // TODO: Add your initialization logic here
             base.Window.Title = "Mono BMS Prototype";
-            changeScene(SCENE.TITLE);
+            //changeScene(SCENE.TITLE);
+            graphics.PreferredBackBufferWidth = (int)SceneManager.Instance.Dimensions.X;
+            graphics.PreferredBackBufferHeight = (int)SceneManager.Instance.Dimensions.Y;
+            graphics.ApplyChanges();
 
             base.Initialize();
         }
@@ -70,11 +64,7 @@ namespace bmsPrototype
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            // TODO: use this.Content to load your game content here
-            //FileStream file = System.IO.File.OpenRead("C:\\Users\\taniguchi\\Documents\\Visual Studio 2015\\Projects\\bmsPrototype\\bmsPrototype\\data\\test.png");
-            // this.texture = Texture2D.FromStream(this.GraphicsDevice, file);
-            this.texture = Content.Load<Texture2D>("data/test");
+            SceneManager.Instance.LoadContent(Content);
         }
 
         /// <summary>
@@ -85,6 +75,7 @@ namespace bmsPrototype
         protected override void UnloadContent()
         {
             // TODO: Unload any non ContentManager content here
+            SceneManager.Instance.UnloadContent();
         }
 
         /// <summary>
@@ -98,11 +89,7 @@ namespace bmsPrototype
                 Exit();
 
             // TODO: Add your update logic here
-            KeyboardState keyState = Keyboard.GetState();
-            if (keyState.IsKeyDown(Keys.Left)) pos.X -= 4;
-            if (keyState.IsKeyDown(Keys.Right)) pos.X += 4;
-            if (keyState.IsKeyDown(Keys.Up)) pos.Y -= 4;
-            if (keyState.IsKeyDown(Keys.Down)) pos.Y += 4;
+            SceneManager.Instance.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -115,30 +102,14 @@ namespace bmsPrototype
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            spriteBatch.Draw(texture, new Vector2(this.pos.X, this.pos.Y), Color.White);
-            //spriteBatch.Draw(texture, new Vector2(0.0f, 200.0f), Color.Green);
-            //spriteBatch.Draw(texture, new Vector2(0.0f, 400.0f), new Color(0x80, 0xFF, 0x80));
+            SceneManager.Instance.Draw(spriteBatch);
             spriteBatch.End();
-            this.scene.Draw();
 
             base.Draw(gameTime);
-        }
-
-        void changeScene(SCENE s)
-        {
-            
-            switch(s)
-            {
-                case SCENE.TITLE:
-                    this.scene = this.title;
-                    break;
-                default:
-                    break;
-            }
         }
     }
 }
