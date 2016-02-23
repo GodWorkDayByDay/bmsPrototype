@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml.Serialization;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -9,15 +10,24 @@ using Microsoft.Xna.Framework.Content;
 
 namespace bmsPrototype
 {
+
+    public class Image
+    {
+        public string Path;
+    }
+
     public class SceneTitle : Scene
     {
         Texture2D image;
-        public string Path;
+        //[XmlElement("Path")]
+        //public List<string> path;
+        public Image Image;
+        public Vector2 Position;
 
         public override void LoadContent()
         {
             base.LoadContent();
-            image = content.Load<Texture2D>(Path);
+            image = content.Load<Texture2D>(Image.Path);
         }
 
         public override void UnloadContent()
@@ -32,7 +42,7 @@ namespace bmsPrototype
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(image, Vector2.Zero, Color.White);
+            spriteBatch.Draw(image, Position, Color.White);
         }
     }
 }
