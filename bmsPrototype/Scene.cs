@@ -2,17 +2,43 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml.Serialization;
+
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+
 
 namespace bmsPrototype
 {
-    class Scene
+    public class Scene
     {
+        protected ContentManager content;
+        [XmlIgnore]
+        public Type Type;
+
+
         public Scene()
         {
-
+            Type = this.GetType();
+        }
+   
+        public virtual void LoadContent()
+        {
+            content = new ContentManager(SceneManager.Instance.Content.ServiceProvider, "Content");
         }
 
-        public virtual void Draw()
+        public virtual void UnloadContent()
+        {
+            content.Unload();
+        }
+
+        public virtual void Update(GameTime gameTime)
+        {
+        
+        }
+
+        public virtual void Draw(SpriteBatch spriteBatch)
         {
 
         }
