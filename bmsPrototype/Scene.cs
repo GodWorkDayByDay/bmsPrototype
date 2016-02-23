@@ -2,20 +2,25 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml.Serialization;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+
 
 namespace bmsPrototype
 {
     public class Scene
     {
         protected ContentManager content;
+        [XmlIgnore]
+        public Type Type;
+
 
         public Scene()
         {
-
+            Type = this.GetType();
         }
    
         public virtual void LoadContent()

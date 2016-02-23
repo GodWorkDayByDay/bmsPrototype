@@ -14,6 +14,7 @@ namespace bmsPrototype
         private static SceneManager instance;
         public Vector2 Dimensions { private set; get; }
         public ContentManager Content { private set; get; }
+        xmlManager<Scene> xmlSceneManager;
 
         Scene currentScreen;
 
@@ -31,6 +32,9 @@ namespace bmsPrototype
         {
             Dimensions = new Vector2(640, 480);
             currentScreen = new SceneTitle();
+            xmlSceneManager = new xmlManager<Scene>();
+            xmlSceneManager.Type = currentScreen.Type;
+            currentScreen = xmlSceneManager.Load("Load/SceneTitle.xml");
         }
 
         public void LoadContent(ContentManager Content)

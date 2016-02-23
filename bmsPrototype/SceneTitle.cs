@@ -12,13 +12,12 @@ namespace bmsPrototype
     public class SceneTitle : Scene
     {
         Texture2D image;
-        string path;
+        public string Path;
 
         public override void LoadContent()
         {
             base.LoadContent();
-            path = "data/white";
-            image = content.Load<Texture2D>(path);
+            image = content.Load<Texture2D>(Path);
         }
 
         public override void UnloadContent()
