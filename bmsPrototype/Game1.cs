@@ -48,11 +48,10 @@ namespace bmsPrototype
             // TODO: Add your initialization logic here
             base.Window.Title = "Mono BMS Prototype";
             //changeScene(SCENE.TITLE);
+            base.Initialize();
             graphics.PreferredBackBufferWidth = (int)SceneManager.Instance.Dimensions.X;
             graphics.PreferredBackBufferHeight = (int)SceneManager.Instance.Dimensions.Y;
             graphics.ApplyChanges();
-
-            base.Initialize();
         }
 
         /// <summary>
@@ -64,6 +63,8 @@ namespace bmsPrototype
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            SceneManager.Instance.GraphicsDevice = GraphicsDevice;
+            SceneManager.Instance.SpriteBatch = spriteBatch;
             SceneManager.Instance.LoadContent(Content);
         }
 
@@ -89,9 +90,10 @@ namespace bmsPrototype
                 Exit();
 
             // TODO: Add your update logic here
+
             SceneManager.Instance.Update(gameTime);
 
-            base.Update(gameTime);
+            
         }
 
 
@@ -105,11 +107,12 @@ namespace bmsPrototype
             GraphicsDevice.Clear(Color.Black);
 
             // TODO: Add your drawing code here
+            base.Draw(gameTime);
             spriteBatch.Begin();
             SceneManager.Instance.Draw(spriteBatch);
             spriteBatch.End();
 
-            base.Draw(gameTime);
+            
         }
     }
 }

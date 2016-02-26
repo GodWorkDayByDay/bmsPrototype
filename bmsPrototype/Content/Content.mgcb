@@ -35,3 +35,9 @@
 /processorParam:TextureFormat=Color
 /build:data/white.png
 
+#begin Fonts/Arial.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:Fonts/Arial.spritefont
+

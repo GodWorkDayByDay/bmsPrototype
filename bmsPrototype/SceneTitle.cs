@@ -10,39 +10,31 @@ using Microsoft.Xna.Framework.Content;
 
 namespace bmsPrototype
 {
-
-    public class Image
-    {
-        public string Path;
-    }
-
     public class SceneTitle : Scene
     {
-        Texture2D image;
-        //[XmlElement("Path")]
-        //public List<string> path;
         public Image Image;
-        public Vector2 Position;
 
         public override void LoadContent()
         {
             base.LoadContent();
-            image = content.Load<Texture2D>(Image.Path);
+            Image.LoadContent();
         }
 
         public override void UnloadContent()
         {
             base.UnloadContent();
+            Image.UnloadContent();
         }
 
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
+            Image.Update(gameTime);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(image, Position, Color.White);
+            Image.Draw(spriteBatch);
         }
     }
 }

@@ -17,6 +17,7 @@ namespace bmsPrototype
             using (TextReader reader = new StreamReader(path))
             {
                 XmlSerializer xml = new XmlSerializer(Type);
+                System.Console.WriteLine("hoge");
                 instance = (T)xml.Deserialize(reader);
             }
             return instance;

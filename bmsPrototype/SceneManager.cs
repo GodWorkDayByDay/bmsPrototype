@@ -17,6 +17,8 @@ namespace bmsPrototype
         xmlManager<Scene> xmlSceneManager;
 
         Scene currentScreen;
+        public GraphicsDevice GraphicsDevice;
+        public SpriteBatch SpriteBatch;
 
         public static SceneManager Instance
         {
