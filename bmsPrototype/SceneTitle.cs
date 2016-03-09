@@ -37,7 +37,8 @@ namespace bmsPrototype
             base.Update(gameTime);
             Image.Update(gameTime);
             TextPress.Update(gameTime);
-            if (Keyboard.GetState().IsKeyDown(Keys.Enter) && !SceneManager.Instance.IsTransitioning)
+            //if (Keyboard.GetState().IsKeyDown(Keys.Enter) && !SceneManager.Instance.IsTransitioning) //this is old
+            if(InputManager.Instance.KeyPressed(Keys.Enter, Keys.Z))
                 SceneManager.Instance.CangeScreens("SceneTitle");
         }
 
