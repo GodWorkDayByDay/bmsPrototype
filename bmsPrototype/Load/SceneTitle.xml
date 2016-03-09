@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <SceneTitle>
   <Image>
-    <Path>data/white</Path>
+    <Path>Data/white</Path>
+    <Effects>FadeEffect</Effects>
+    <IsActive>false</IsActive>
     <Position>
       <X>100</X>
       <Y>100</Y>
@@ -11,4 +13,13 @@
       <Y>2.0</Y>
     </Scale>
   </Image>
+  <TextPress>
+  	<Text>Press any key to start.</Text>
+  	<Effects>FadeEffect</Effects>
+    <IsActive>false</IsActive>
+  	<Position>
+  		<X>50</X>
+  		<Y>50</Y>
+  	</Position>
+  </TextPress>
 </SceneTitle>

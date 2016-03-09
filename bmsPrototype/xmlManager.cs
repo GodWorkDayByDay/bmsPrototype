@@ -11,13 +11,17 @@ namespace bmsPrototype
     {
         public Type Type;
 
+        public xmlManager()
+        {
+            Type = typeof(T);
+        }
+
         public T Load(string path)
         {
             T instance;
             using (TextReader reader = new StreamReader(path))
             {
                 XmlSerializer xml = new XmlSerializer(Type);
-                System.Console.WriteLine("hoge");
                 instance = (T)xml.Deserialize(reader);
             }
             return instance;

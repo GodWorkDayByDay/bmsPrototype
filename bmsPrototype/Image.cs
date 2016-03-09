@@ -16,6 +16,7 @@ namespace bmsPrototype
         public string Text, FontName, Path;
         public Vector2 Position, Scale;
         public Rectangle SourceRect;
+        public bool IsActive;
         [XmlIgnore]
         public Texture2D Texture;
         Vector2 origin;
@@ -23,14 +24,59 @@ namespace bmsPrototype
         RenderTarget2D renderTarget;
         SpriteFont font;
 
+        Dictionary<string, ImageEffect> effectList;
+        public string Effects;
+
+        public FadeEffect FadeEffect;
+
+        void SetEffect<T>(ref T effect)
+        {
+            if (effect == null)
+                effect = (T)Activator.CreateInstance(typeof(T));
+            else {
+                (effect as ImageEffect).IsActive = true;
+                var obj = this;
+                (effect as ImageEffect).LoadContent(ref obj);
+            }
+            effectList.Add(effect.GetType().ToString().Replace("bmsPrototype.", ""), (effect as ImageEffect));
+            foreach (KeyValuePair<string, ImageEffect> kvp in effectList)
+            {
+                System.Console.Write("{0:s}*{1:d}", kvp.Key, kvp.Value);
+            }
+        }
+
+        public void ActiveEffect(string effect)
+        {
+            System.Console.WriteLine("ActiveEffect is called. effect string:" + effect);
+            //todo check this 
+            if (effectList.ContainsKey(effect))
+            {
+                System.Console.WriteLine(effectList[effect].ToString());
+                effectList[effect].IsActive = true;
+                var obj = this;
+                effectList[effect].LoadContent(ref obj);
+
+            }
+        }
+
+        public void DeactiveEffect(string effect)
+        {
+            if (effectList.ContainsKey(effect))
+            {
+                effectList[effect].IsActive = false;
+                effectList[effect].UnLoadContent();
+            }
+        }
+
         public Image()
         {
-            Path = Text =  String.Empty;
+            Path = Text = Effects = String.Empty;
             FontName = "Fonts/Arial";
             Position = Vector2.Zero;
             Scale = Vector2.One;
             Alpha = 1.0f;
             SourceRect = Rectangle.Empty;
+            effectList = new Dictionary<string, ImageEffect>();
         }
 
         public void LoadContent()
@@ -69,16 +115,42 @@ namespace bmsPrototype
             Texture = renderTarget;
 
             SceneManager.Instance.GraphicsDevice.SetRenderTarget(null);
+
+            SetEffect<FadeEffect>(ref FadeEffect);
+
+            if (Effects != String.Empty)
+            {
+                System.Console.WriteLine("activate effect:" + Effects.ToString());
+                string[] split = Effects.Split(':');
+                foreach (string item in split)
+                {
+                    System.Console.WriteLine("activating");
+                    ActiveEffect(item);
+                }
+            }
         }
 
         public void UnloadContent()
         {
             content.Unload();
+            foreach (var effect in effectList)
+            {
+                //effect.Value.UnLoadContent ();
+                DeactiveEffect(effect.Key);
+            }
         }
 
         public void Update(GameTime gameTime)
         {
-
+            foreach (var effect in effectList)
+            {
+                //System.Console.WriteLine ("foreach at image update"); //for debug
+                if (effect.Value.IsActive)
+                {
+                    //System.Console.WriteLine ("active effect is here");//for debug
+                    effect.Value.Update(gameTime);
+                }
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)

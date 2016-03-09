@@ -16,11 +16,14 @@ namespace bmsPrototype
         protected ContentManager content;
         [XmlIgnore]
         public Type Type;
+        public string xmlPath;
 
 
         public Scene()
         {
             Type = this.GetType();
+            xmlPath = "Load/" + Type.ToString().Replace("bmsPrototype.", "") + ".xml";
+            System.Console.WriteLine("Scene Constructor caled : " + xmlPath);
         }
    
         public virtual void LoadContent()
