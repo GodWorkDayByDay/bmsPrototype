@@ -39,7 +39,7 @@ namespace bmsPrototype
             TextPress.Update(gameTime);
             //if (Keyboard.GetState().IsKeyDown(Keys.Enter) && !SceneManager.Instance.IsTransitioning) //this is old
             if(InputManager.Instance.KeyPressed(Keys.Enter, Keys.Z))
-                SceneManager.Instance.CangeScreens("SceneTitle");
+                SceneManager.Instance.CangeScreens("SceneMenu");
         }
 
         public override void Draw(SpriteBatch spriteBatch)
