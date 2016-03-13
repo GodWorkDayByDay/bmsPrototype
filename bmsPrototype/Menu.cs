@@ -20,6 +20,11 @@ namespace bmsPrototype
         int itemNumber;
         string id;
 
+        public int ItemNumber
+        {
+            get { return itemNumber; }
+        }
+
         public string ID
         {
             get { return id; }
@@ -27,6 +32,19 @@ namespace bmsPrototype
             {
                 id = value;
                 OnMenuChange(this, null);
+            }
+        }
+
+        public void Transition(float alpha)
+        {
+            foreach(MenuItem item in Items)
+            {
+                item.Image.IsActive = true;
+                item.Image.Alpha = alpha;
+                if (alpha == 0.0f)
+                    item.Image.FadeEffect.Increase = true;
+                else
+                    item.Image.FadeEffect.Increase = false;
             }
         }
 
@@ -57,7 +75,7 @@ namespace bmsPrototype
             id = String.Empty;
             itemNumber = 0;
             Effects = String.Empty;
-            Axis = "Y";
+            Axis = "X";
             Items = new List<MenuItem>();
         }
 
@@ -69,7 +87,7 @@ namespace bmsPrototype
                 item.Image.LoadContent();
                 foreach(string s in split)
                 {
-                    item.Image.ActiveEffect(s);
+                    item.Image.ActivateEffect(s);
                 }
                 AlignMenuItems();
             }

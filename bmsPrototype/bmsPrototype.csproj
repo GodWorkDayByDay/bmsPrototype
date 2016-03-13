@@ -67,6 +67,7 @@
   <ItemGroup>
     <Content Include="Icon.ico" />
     <Content Include="Load\Menus\SceneMenu.xml" />
+    <Content Include="Load\Menus\TestMenu.xml" />
     <Content Include="Load\SceneManager.xml" />
     <Content Include="Load\SceneTitle.xml" />
   </ItemGroup>

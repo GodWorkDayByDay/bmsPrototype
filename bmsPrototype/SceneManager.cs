@@ -30,7 +30,7 @@ namespace bmsPrototype
         [XmlIgnore]
         public bool IsTransitioning { get; private set; }
 
-        public void CangeScreens(string screenName)
+        public void ChangeScreens(string screenName)
         {
             System.Console.WriteLine("changeScreen called:" + screenName);
             newScreen = (Scene)Activator.CreateInstance(Type.GetType("bmsPrototype." + screenName));

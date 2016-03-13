@@ -45,7 +45,7 @@ namespace bmsPrototype
             }
         }
 
-        public void ActiveEffect(string effect)
+        public void ActivateEffect(string effect)
         {
             System.Console.WriteLine("ActiveEffect is called. effect string:" + effect);
             //todo check this 
@@ -65,6 +65,31 @@ namespace bmsPrototype
             {
                 effectList[effect].IsActive = false;
                 effectList[effect].UnLoadContent();
+            }
+        }
+
+        public void StoreEffects()
+        {
+            Effects = String.Empty;
+            foreach(var effect in effectList)
+            {
+                if (effect.Value.IsActive)
+                    Effects += effect.Key + ":";
+            }
+            if (Effects != String.Empty)
+            Effects.Remove(Effects.Length - 1);
+        }
+
+        public void RestoreEffects()
+        {
+            foreach (var effect in effectList)
+            {
+                DeactiveEffect(effect.Key);
+            }
+            string[] split = Effects.Split(':');
+            foreach(string s in split)
+            {
+                ActivateEffect(s);
             }
         }
 
@@ -125,7 +150,7 @@ namespace bmsPrototype
                 foreach (string item in split)
                 {
                     System.Console.WriteLine("activating");
-                    ActiveEffect(item);
+                    ActivateEffect(item);
                 }
             }
         }

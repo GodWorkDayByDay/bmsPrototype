@@ -1,27 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Menu>
   <Axis>Y</Axis>
-  <Effects>FadeEffect</Effects>
   <Item>
     <LinkType>Menu</LinkType>
-    <LinkID>Load/Menus/TestMenu.xml</LinkID>
+    <LinkID>Load/Menus/SceneMenu.xml</LinkID>
     <Image>
-      <Text>New Game</Text>
+      <Text>Back</Text>
     </Image>
   </Item>
   <Item>
     <Image>
-      <Text>Load Game</Text>
+      <Text>fun</Text>
     </Image>
   </Item>
   <Item>
     <Image>
-      <Text>Option</Text>
+      <Text>fuck</Text>
     </Image>
   </Item>
   <Item>
     <Image>
-      <Text>Credits</Text>
+      <Text>you</Text>
     </Image>
   </Item>
 </Menu>
