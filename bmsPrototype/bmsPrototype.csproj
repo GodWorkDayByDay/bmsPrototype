@@ -49,9 +49,11 @@
     <Compile Include="Menu.cs" />
     <Compile Include="MenuItem.cs" />
     <Compile Include="MenuManager.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scene.cs" />
+    <Compile Include="SceneGameplay.cs" />
     <Compile Include="SceneManager.cs" />
     <Compile Include="SceneMenu.cs" />
     <Compile Include="SceneTitle.cs" />
@@ -66,10 +68,20 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon.ico" />
-    <Content Include="Load\Menus\SceneMenu.xml" />
+    <Content Include="Load\Menus\SceneMenu.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Load\Menus\TestMenu.xml" />
+    <Content Include="Load\Player.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Load\SceneManager.xml" />
-    <Content Include="Load\SceneTitle.xml" />
+    <Content Include="Load\SceneGameplay.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Load\SceneTitle.xml">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
