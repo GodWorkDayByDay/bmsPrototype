@@ -2,6 +2,7 @@
 <Player>
   <Image>
     <Path>Gameplay/player</Path>
+    <Effects>SpriteSheetEffect</Effects>
     <Position>
       <X>0</X>
       <Y>0</Y>

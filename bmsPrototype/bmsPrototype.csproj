@@ -57,6 +57,7 @@
     <Compile Include="SceneManager.cs" />
     <Compile Include="SceneMenu.cs" />
     <Compile Include="SceneTitle.cs" />
+    <Compile Include="SpriteSheetEffect.cs" />
     <Compile Include="xmlManager.cs" />
   </ItemGroup>
   <ItemGroup>
