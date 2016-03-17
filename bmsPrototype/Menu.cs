@@ -27,10 +27,10 @@ namespace bmsPrototype
 
         public string ID
         {
-            get { return id; }
+            get { return this.id; }
             set
             {
-                id = value;
+                this.id = value;
                 OnMenuChange(this, null);
             }
         }
@@ -84,6 +84,7 @@ namespace bmsPrototype
             string[] split = Effects.Split(':');
             foreach(MenuItem item in Items)
             {
+                System.Console.WriteLine("Text of Loading item :" + item.Image.Text);
                 item.Image.LoadContent();
                 foreach(string s in split)
                 {

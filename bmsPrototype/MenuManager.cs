@@ -25,7 +25,8 @@ namespace bmsPrototype
                     float last = menu.Items[menu.Items.Count - 1].Image.Alpha;
                     if(first == 0.0f && last == 0.0f)
                     {
-                        menu.ID = menu.Items[menu.ItemNumber].LinkID;
+                        System.Console.WriteLine("Transitioning Menu to ID:" + menu.Items[menu.ItemNumber].LinkID);
+                        menu.ID = menu.Items[menu.ItemNumber].LinkID;   
                     }
                     else if(first ==1.0f && last == 1.0f)
                     {
@@ -43,6 +44,7 @@ namespace bmsPrototype
         {
             menu = new Menu();
             menu.OnMenuChange += menu_OnMenuChange;
+            isTransitioning = false;
         }
 
         void menu_OnMenuChange(object sender, EventArgs e)
@@ -65,6 +67,7 @@ namespace bmsPrototype
         {
             if (menuPath != String.Empty)
                 menu.ID = menuPath;
+            System.Console.WriteLine("for break point");
         }
 
         public void UnloadContent()

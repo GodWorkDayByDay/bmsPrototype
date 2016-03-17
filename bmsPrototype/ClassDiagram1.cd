@@ -1,7 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="bmsPrototype.MenuManager">
+    <Position X="12" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEAAAAIAAAgAAAAAAAAgAAABAAAAAAAAAAQAAAAQ=</HashCode>
+      <FileName>MenuManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="bmsPrototype.FadeEffect" Collapsed="true">
+    <Position X="3" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAQ=</HashCode>
+      <FileName>FadeEffect.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Class Name="bmsPrototype.Game1">
-    <Position X="5.5" Y="1" Width="1.5" />
+    <Position X="10.25" Y="2.25" Width="1.5" />
     <NestedTypes>
       <Enum Name="bmsPrototype.Game1.SCENE" Collapsed="true">
         <TypeIdentifier>
@@ -14,32 +28,95 @@
       <FileName>Game1.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="bmsPrototype.Image">
+    <Position X="12" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CgYCkAGAAAAhAgIgEAZAAAAAAIAAABBAAAMACAAAAAQ=</HashCode>
+      <FileName>Image.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="bmsPrototype.ImageEffect" Collapsed="true">
+    <Position X="3" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEAAAAAAAAAAAEAAAAAAAEAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>ImageEffect.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="bmsPrototype.InputManager">
+    <Position X="13.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQgAAAAAAAAgAAAAAAAAAAAAABAAAAARAAAABBAAAA=</HashCode>
+      <FileName>InputManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="bmsPrototype.Menu">
+    <Position X="15.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEAAAAAAAmwAAAAQAAACAAABAgAAAAAAAAAAAAgU=</HashCode>
+      <FileName>Menu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="bmsPrototype.MenuItem">
+    <Position X="10.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAgABAAAAAAIAAAAAA=</HashCode>
+      <FileName>MenuItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Class Name="bmsPrototype.Program">
-    <Position X="7.25" Y="1" Width="1.5" />
+    <Position X="15.5" Y="9.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="bmsPrototype.Scene">
-    <Position X="3" Y="1" Width="1.5" />
+  <Class Name="bmsPrototype.Player">
+    <Position X="13.75" Y="9.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQCEAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <HashCode>AAQAEAAAAAAAAhAAAAAAAAAAAAAAABAAAAAAAAAEAAQ=</HashCode>
+      <FileName>Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="bmsPrototype.Scene" Collapsed="true">
+    <Position X="5.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCEAAAAAAAAgQAAAAAAAAAAAAAAAAAAQAAAAAAAAQ=</HashCode>
       <FileName>Scene.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="bmsPrototype.SceneManager">
-    <Position X="5.5" Y="4.5" Width="1.5" />
+  <Class Name="bmsPrototype.SceneGameplay" Collapsed="true">
+    <Position X="7.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAEAAAAgAAAgAAAAAAAAIAAABAAAAAQAAgAAAAAAQ=</HashCode>
+      <HashCode>AAQAEAAAAAAAAgAAAAAAAAAAAAAAAAABAAAAAAAAAAQ=</HashCode>
+      <FileName>SceneGameplay.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="bmsPrototype.SceneManager">
+    <Position X="6.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEAAAAgAAAgAAAACAAAIAAABgABABQAAkAAAAAIQ=</HashCode>
       <FileName>SceneManager.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="bmsPrototype.SceneTitle">
-    <Position X="3" Y="4.5" Width="1.5" />
+  <Class Name="bmsPrototype.SceneMenu" Collapsed="true">
+    <Position X="3.25" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAEAAAAAAAAgAAAAACAAAAEAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <HashCode>AAQQEAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>SceneMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="bmsPrototype.SceneTitle" Collapsed="true">
+    <Position X="5.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEAAAAAAAAgAAAAAAAAAAAAAAABAAAAAAAACAAAQ=</HashCode>
       <FileName>SceneTitle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="bmsPrototype.xmlManager&lt;T&gt;">
+    <Position X="8.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgIAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>xmlManager.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="メイリオ" Size="9" />

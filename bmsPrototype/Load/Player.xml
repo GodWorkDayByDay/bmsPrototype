@@ -1,7 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Player>
   <Image>
-    <Path>GamePlay/player</Path>
+    <Path>Gameplay/player</Path>
+    <Position>
+      <X>0</X>
+      <Y>0</Y>
+    </Position>
   </Image>
-  <MoveSpeed>100</MoveSpeed>
+  <MoveSpeed>100.0</MoveSpeed>
 </Player>

@@ -7,8 +7,8 @@ namespace bmsPrototype
 {
     public class MenuItem
     {
-        public string LinkType;
-        public string LinkID;
+        public string LinkType;//kind of class (ex. Menu
+        public string LinkID;//Path to xmlfile? 
         public Image Image;
     }
 }

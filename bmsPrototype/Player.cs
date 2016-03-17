@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace bmsPrototype
 {
-    class Player
+    public class Player
     {
         public Image Image;
         public Vector2 Velocity;
@@ -25,6 +25,7 @@ namespace bmsPrototype
         public void LoadContent()
         {
             Image.LoadContent();
+            Image.IsActive = true;
         }
 
         public void UnloadContent()
@@ -55,7 +56,7 @@ namespace bmsPrototype
 
         public void Draw(SpriteBatch spriteBatch)
         {
-
+            Image.Draw(spriteBatch);
         }
     }
 }
