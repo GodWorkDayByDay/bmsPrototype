@@ -42,6 +42,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="FadeEffect.cs" />
+    <Compile Include="FrameCounter.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Image.cs" />
     <Compile Include="ImageEffect.cs" />
@@ -49,6 +50,7 @@
     <Compile Include="Menu.cs" />
     <Compile Include="MenuItem.cs" />
     <Compile Include="MenuManager.cs" />
+    <Compile Include="PanelInfo.cs" />
     <Compile Include="PanelPlayer.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
@@ -75,6 +77,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Load\Menus\TestMenu.xml" />
+    <Content Include="Load\PlayBMS\PanelInfo.xml" />
     <Content Include="Load\PlayBMS\PanelPlayer.xml" />
     <Content Include="Load\Player.xml">
       <SubType>Designer</SubType>

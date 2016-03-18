@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<PanelInfo>
+  <Position>
+    <X>201</X>
+    <Y>0</Y>
+  </Position>
+  <Base>
+    <Path>PlayBMS/Base</Path>
+    <Position>
+      <X>0</X>
+      <Y>0</Y>
+    </Position>
+    <Scale>
+      <X>200</X>
+      <Y>600</Y>
+    </Scale>
+  </Base>
+  <Fps>
+    <Effects>FadeEffect</Effects>
+    <IsActive>false</IsActive>
+    <Text>FPS</Text>
+    <Position>
+      <X>10</X>
+      <Y>10</Y>
+    </Position>
+  </Fps>
+</PanelInfo>
