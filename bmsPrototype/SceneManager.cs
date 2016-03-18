@@ -81,7 +81,7 @@ namespace bmsPrototype
 
         public SceneManager()
         {
-            Dimensions = new Vector2(640, 480);
+            Dimensions = new Vector2(800, 600);
             currentScreen = new SceneTitle();
             xmlSceneManager = new xmlManager<Scene>();
             xmlSceneManager.Type = currentScreen.Type;

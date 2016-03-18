@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<PanelPlayer>
+  <Position>
+    <X>0</X>
+    <Y>0</Y>
+  </Position>
+  <Base>
+    <Path>PlayBMS/Base</Path>
+    <Position>
+      <X>0</X>
+      <Y>0</Y>
+    </Position>
+    <Scale>
+      <X>300</X>
+      <Y>600</Y>
+    </Scale>
+  </Base>
+  <Lane>
+    <Path>PlayBMS/Lane</Path>
+    <Position>
+      <X>10</X>
+      <Y>10</Y>
+    </Position>
+  </Lane>
+</PanelPlayer>

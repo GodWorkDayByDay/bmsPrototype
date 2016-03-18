@@ -17,6 +17,8 @@
     </Image>
   </Item>
   <Item>
+    <LinkType>Screen</LinkType>
+    <LinkID>ScenePlayBMS</LinkID>
     <Image>
       <Text>STANDARD</Text>
     </Image>

@@ -4,8 +4,8 @@
 		<Path>SceneManager/FadeImage</Path>
 		<Effects>FadeEffect</Effects>
 		<Scale>
-			<X>640</X>
-			<Y>480</Y>
+			<X>800</X>
+			<Y>600</Y>
 		</Scale>
 	</Image>
 </SceneManager>

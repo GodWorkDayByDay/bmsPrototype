@@ -81,7 +81,7 @@ namespace bmsPrototype
                 menu.Update(gameTime);
             if(InputManager.Instance.KeyPressed(Keys.Enter) && !isTransitioning)
             {
-                isTransitioning = true;
+                isTransitioning = false;//check true or false
                 if(menu.Items[menu.ItemNumber].LinkType == "Screen")
                 {
                     SceneManager.Instance.ChangeScreens(menu.Items[menu.ItemNumber].LinkID);
