@@ -13,17 +13,24 @@ namespace bmsPrototype
     {
         PanelPlayer PanelPlayer;
         PanelInfo PanelInfo;
+        Tune Tune;
+
+        string loadStartTime, loadEndTime;
 
         public override void LoadContent()
         {
-            base.LoadContent();
+            /* init values */
+            loadStartTime = loadEndTime = string.Empty;
+            /* for Load Content */
             xmlManager<PanelPlayer> panelPlayerLoader = new xmlManager<PanelPlayer>();
             PanelPlayer = panelPlayerLoader.Load("Load/PlayBMS/PanelPlayer.xml");
             xmlManager<PanelInfo> panelInfoLoader = new xmlManager<PanelInfo>();
             PanelInfo = panelInfoLoader.Load("Load/PlayBMS/PanelInfo.xml");
             /* Load Content */
+            base.LoadContent();
             PanelPlayer.LoadContent();
             PanelInfo.LoadContent();
+            Tune = new Tune("./Content/indication_ogg/indication_normal.bme");
         }
 
         public override void UnloadContent()
@@ -38,6 +45,18 @@ namespace bmsPrototype
             base.Update(gameTime);
             PanelPlayer.Update(gameTime);
             PanelInfo.Update(gameTime);
+
+            if (loadStartTime == string.Empty)
+                loadStartTime = "LST: " + gameTime.TotalGameTime.ToString();
+            if (Tune.IsLoading)
+                PanelInfo.Loading.IsActive = true;
+            else
+            {
+                if (loadEndTime == string.Empty)
+                    loadEndTime = "LET: " + gameTime.TotalGameTime.ToString();
+                PanelInfo.Loading.IsActive = false;
+                PanelInfo.Loading.Alpha = 0.0f;
+            }
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -45,6 +64,15 @@ namespace bmsPrototype
             base.Draw(spriteBatch);
             PanelPlayer.Draw(spriteBatch);
             PanelInfo.Draw(spriteBatch);
+            PanelInfo.DrawText(spriteBatch, loadStartTime, 4);
+            PanelInfo.DrawText(spriteBatch, loadEndTime, 5);
+            PanelInfo.DrawText(spriteBatch, "#PLAYER:" + Tune.Player.ToString(), 6);
+            PanelInfo.DrawText(spriteBatch, "#PLAYLEVEL:" + Tune.PlayLevel.ToString(), 7);
+            PanelInfo.DrawText(spriteBatch, "#ARTIST:" + Tune.Artist, 8);
+            PanelInfo.DrawText(spriteBatch, "#TITLE:" + Tune.Title, 9);
+            PanelInfo.DrawText(spriteBatch, "#GENRE:" + Tune.Genre, 10);
+            PanelInfo.DrawText(spriteBatch, "#BPM:" + Tune.Bpm.ToString(), 11);
+            PanelInfo.DrawText(spriteBatch, "#RANK:" + Tune.Rank.ToString(), 12);
         }
     }
 }

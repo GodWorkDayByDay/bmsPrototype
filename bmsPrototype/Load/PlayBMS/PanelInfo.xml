@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <PanelInfo>
   <Position>
-    <X>201</X>
+    <X>301</X>
     <Y>0</Y>
   </Position>
   <Base>
@@ -11,7 +11,7 @@
       <Y>0</Y>
     </Position>
     <Scale>
-      <X>200</X>
+      <X>300</X>
       <Y>600</Y>
     </Scale>
   </Base>
@@ -24,4 +24,13 @@
       <Y>10</Y>
     </Position>
   </Fps>
+  <Loading>
+    <Effects>FadeEffect</Effects>
+    <IsActive>false</IsActive>
+    <Text>Loading...</Text>
+    <Position>
+      <X>10</X>
+      <Y>100</Y>
+    </Position>
+  </Loading>
 </PanelInfo>
