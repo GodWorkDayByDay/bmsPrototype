@@ -22,6 +22,7 @@ namespace bmsPrototype
         public float Total;
         public string StageFilePath;
         /* Tune Object */
+        public Dictionary<int, Wav> WavDictionary;
         /* Tune State */
         public bool IsLoading { get; private set; }
 
@@ -31,7 +32,8 @@ namespace bmsPrototype
             Genre = Title = Artist = StageFilePath = string.Empty;
             Player = PlayLevel = Rank = VolumeWav = 0;
             Bpm = Total = 0.0f;
-            IsLoading = false; 
+            IsLoading = false;
+            WavDictionary = new Dictionary<int, Wav>();
             if(System.IO.File.Exists(Path))
             {
                 System.Console.WriteLine("This BMS file exists:" + this.Path);
@@ -82,6 +84,10 @@ namespace bmsPrototype
                     buffer = await sr.ReadLineAsync();
                 }
                 sr.Close();
+                foreach(KeyValuePair<int, Wav> dic in WavDictionary)
+                {
+                    System.Console.WriteLine("Wav{0}:{1}, {2}", dic.Key, dic.Value.FileName, dic.Value.Number); 
+                }
                 IsLoading = false;
             }
             );
@@ -96,10 +102,12 @@ namespace bmsPrototype
                 {
                     commandArray[1] += " " + commandArray[i];
                 }
+            /*
             foreach(string str in commandArray)
             {
                 System.Console.WriteLine(str);
             }
+            */
             int j = 0;
             float f = 0.0f;
             if (line.Substring(0, 1) == "#")
@@ -198,7 +206,19 @@ namespace bmsPrototype
 
                         }
                         break;
+                    case "W":
+                        if(commandArray[0].Substring(0, 4) == "#WAV")
+                        {
+                            string wavNumberStr = commandArray[0].Substring(4, 2);
+                            int wavNumberInt = RadixConvert.ToInt16(wavNumberStr, 36);
+                            Wav wav = new Wav(commandArray[1], wavNumberInt);
+                            WavDictionary.Add(wavNumberInt, wav);
+                        }
+                        break;
                     default:
+                        string[] data = line.Split(':');
+                        data[0].Substring(1, 3);
+                        data[0].Substring(4, 2);
                         break;
                 }
      

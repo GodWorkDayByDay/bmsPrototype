@@ -9,5 +9,11 @@ namespace bmsPrototype
     {
         public string FileName;
         public int Number;
+
+        public Wav(string str, int num)
+        {
+            FileName = str;
+            Number = num;
+        }
     }
 }

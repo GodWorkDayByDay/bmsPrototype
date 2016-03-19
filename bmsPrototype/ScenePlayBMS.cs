@@ -66,13 +66,13 @@ namespace bmsPrototype
             PanelInfo.Draw(spriteBatch);
             PanelInfo.DrawText(spriteBatch, loadStartTime, 4);
             PanelInfo.DrawText(spriteBatch, loadEndTime, 5);
-            PanelInfo.DrawText(spriteBatch, "#PLAYER:" + Tune.Player.ToString(), 6);
-            PanelInfo.DrawText(spriteBatch, "#PLAYLEVEL:" + Tune.PlayLevel.ToString(), 7);
-            PanelInfo.DrawText(spriteBatch, "#ARTIST:" + Tune.Artist, 8);
-            PanelInfo.DrawText(spriteBatch, "#TITLE:" + Tune.Title, 9);
-            PanelInfo.DrawText(spriteBatch, "#GENRE:" + Tune.Genre, 10);
-            PanelInfo.DrawText(spriteBatch, "#BPM:" + Tune.Bpm.ToString(), 11);
-            PanelInfo.DrawText(spriteBatch, "#RANK:" + Tune.Rank.ToString(), 12);
+            PanelInfo.DrawText(spriteBatch, "#PLAYER: " + Tune.Player.ToString(), 6);
+            PanelInfo.DrawText(spriteBatch, "#PLAYLEVEL: " + Tune.PlayLevel.ToString(), 7);
+            PanelInfo.DrawText(spriteBatch, "#ARTIST: " + Tune.Artist, 8);
+            PanelInfo.DrawText(spriteBatch, "#TITLE: " + Tune.Title, 9);
+            PanelInfo.DrawText(spriteBatch, "#GENRE: " + Tune.Genre, 10);
+            PanelInfo.DrawText(spriteBatch, "#BPM: " + Tune.Bpm.ToString(), 11);
+            PanelInfo.DrawText(spriteBatch, "#RANK: " + Tune.Rank.ToString(), 12);
         }
     }
 }
