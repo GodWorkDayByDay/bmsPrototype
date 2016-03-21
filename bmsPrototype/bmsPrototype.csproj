@@ -45,6 +45,7 @@
     <StartupObject>bmsPrototype.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="BmsData.cs" />
     <Compile Include="FadeEffect.cs" />
     <Compile Include="FrameCounter.cs" />
     <Compile Include="Game1.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="Menu.cs" />
     <Compile Include="MenuItem.cs" />
     <Compile Include="MenuManager.cs" />
+    <Compile Include="Object.cs" />
     <Compile Include="PanelInfo.cs" />
     <Compile Include="PanelPlayer.cs" />
     <Compile Include="Player.cs" />
