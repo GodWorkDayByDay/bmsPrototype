@@ -15,6 +15,7 @@ namespace bmsPrototype
         /* private */
         private string data;
         private List<int> dataList;
+        private bool debug = true;
 
         public BmsData(string line)
         {
@@ -23,12 +24,18 @@ namespace bmsPrototype
             this.data = string.Empty;
             this.BarMagnitude = 0.0f;
             this.dataList = new List<int>();
+            if (debug)
+            {
+                System.Console.WriteLine(line.Substring(0, 1) + " == # ?");
+                System.Console.WriteLine(line.IndexOf(":") + " has : ?");
+            }
             if (line.Substring(0, 1) == "#" && line.IndexOf(":") != 0) {
                 string[] data = line.Split(':');
                 this.BarNumber = Int32.Parse(data[0].Substring(1, 3));
                 this.Channel = Int32.Parse(data[0].Substring(4, 2));
                 this.data = data[1];
                 InterpretBmsData();
+                printBmsData(); //for debug line
             }
         }
 
@@ -91,6 +98,27 @@ namespace bmsPrototype
                 }
             }
             return substList;
+        }
+        /// <summary>
+        /// for debug
+        /// </summary>
+        public void printBmsData()
+        {
+            System.Console.WriteLine("--------------------");
+            System.Console.WriteLine("CH: " + this.Channel.ToString());
+            System.Console.WriteLine("BarNumber: " + this.BarNumber.ToString());
+            System.Console.WriteLine("BarMagnitude: " + this.BarMagnitude.ToString());
+            if (this.Objects != null)
+            {
+                System.Console.WriteLine("Objects");
+                int objcount = 0;
+                foreach (Object obj in this.Objects)
+                {
+                    System.Console.WriteLine("Object: " + ++objcount);
+                    System.Console.WriteLine("Time: " + obj.Time);
+                    System.Console.WriteLine("Data: " + obj.Data);
+                }
+            }
         }
     }
 }

@@ -21,8 +21,10 @@ namespace bmsPrototype
         public int VolumeWav;
         public float Total;
         public string StageFilePath;
+        public int Difficulty;
         /* Tune Object */
         public Dictionary<int, Wav> WavDictionary;
+        public List<BmsData> ListBmsData; 
         /* Tune State */
         public bool IsLoading { get; private set; }
 
@@ -30,10 +32,11 @@ namespace bmsPrototype
         {
             Path = path;
             Genre = Title = Artist = StageFilePath = string.Empty;
-            Player = PlayLevel = Rank = VolumeWav = 0;
+            Player = PlayLevel = Rank = VolumeWav = Difficulty = 0;
             Bpm = Total = 0.0f;
             IsLoading = false;
             WavDictionary = new Dictionary<int, Wav>();
+            ListBmsData = new List<BmsData>();
             if(System.IO.File.Exists(Path))
             {
                 System.Console.WriteLine("This BMS file exists:" + this.Path);
@@ -129,6 +132,16 @@ namespace bmsPrototype
                             }
                         }
                         break;
+                    case "D":
+                        if(commandArray[0] == "#DIFFICULTY")
+                        {
+                            if(Int32.TryParse(commandArray[0], out j))
+                            {
+                                System.Console.WriteLine("complete cast int.");
+                                this.Difficulty = j;
+                            }
+                        }
+                        break;
                     case "G":
                         if(commandArray[0] == "#GENRE")
                         {
@@ -216,9 +229,15 @@ namespace bmsPrototype
                         }
                         break;
                     default:
+                        //System.Console.Write("default");
+                        //System.Console.WriteLine(line.Substring(1, line.Length - 1));
+                        //System.Console.WriteLine(line.Remove('#'));
+                        BmsData bmsData = new BmsData(line);
+                        /*
                         string[] data = line.Split(':');
                         data[0].Substring(1, 3);
                         data[0].Substring(4, 2);
+                        */
                         break;
                 }
      
