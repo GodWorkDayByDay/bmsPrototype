@@ -30,4 +30,6 @@
 *** 1. BmsData.cs #aaabb:XX 一行に対応
 - とあるBMSツールで作った.bmsファイルではCH01が0のみの行も含めて16行生成される
 *** 2. CH2で小節長を計算
+todo : 小節開始時のcountを計算
 *** 3. BmsDataの小節長を更新
+todo : Objectsクラスを作成obj.dataはintで良いのか

@@ -24,7 +24,8 @@ namespace bmsPrototype
         public int Difficulty;
         /* Tune Object */
         public Dictionary<int, Wav> WavDictionary;
-        public List<BmsData> ListBmsData; 
+        public List<BmsData> ListBmsData;
+        public List<BmsData> ListBmsDataCh2;
         /* Tune State */
         public bool IsLoading { get; private set; }
 
@@ -37,7 +38,8 @@ namespace bmsPrototype
             IsLoading = false;
             WavDictionary = new Dictionary<int, Wav>();
             ListBmsData = new List<BmsData>();
-            if(System.IO.File.Exists(Path))
+            ListBmsDataCh2 = new List<BmsData>();
+            if (System.IO.File.Exists(Path))
             {
                 System.Console.WriteLine("This BMS file exists:" + this.Path);
                 LoadBMSFileAsync(new Progress<string>(line => System.Console.Write(line + System.Environment.NewLine)));
@@ -87,10 +89,30 @@ namespace bmsPrototype
                     buffer = await sr.ReadLineAsync();
                 }
                 sr.Close();
+                /* set bmsData magnitude */
+                foreach(BmsData source in ListBmsDataCh2) //error may happen because list is not initialized
+                {
+                    foreach (BmsData target in ListBmsData)
+                    {
+                        if (target.BarNumber == source.BarNumber)
+                        {
+                            target.BarMagnitude = source.BarMagnitude;
+                        }
+                    }
+                }
+                /* check bms data */
+                foreach(BmsData tmp in ListBmsData)
+                {
+                    if(tmp.Channel > 1)
+                        tmp.printBmsData();
+                }
+                /* check wav data */
+                /*
                 foreach(KeyValuePair<int, Wav> dic in WavDictionary)
                 {
                     System.Console.WriteLine("Wav{0}:{1}, {2}", dic.Key, dic.Value.FileName, dic.Value.Number); 
                 }
+                */
                 IsLoading = false;
             }
             );
@@ -233,6 +255,17 @@ namespace bmsPrototype
                         //System.Console.WriteLine(line.Substring(1, line.Length - 1));
                         //System.Console.WriteLine(line.Remove('#'));
                         BmsData bmsData = new BmsData(line);
+                        if (bmsData.IsCorrectData)
+                        {
+                            if (bmsData.Channel == 2)
+                            {
+                                ListBmsDataCh2.Add(bmsData); //need to change magnitude or not 
+                            }
+                            else
+                            {
+                                ListBmsData.Add(bmsData);
+                            }
+                        }
                         /*
                         string[] data = line.Split(':');
                         data[0].Substring(1, 3);

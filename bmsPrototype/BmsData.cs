@@ -12,18 +12,21 @@ namespace bmsPrototype
         public int Channel;
         public float BarMagnitude; //for channel 02
         public Object[] Objects; //this isnt here??
+        public bool IsCorrectData; //this is correct BMS data line
         /* private */
         private string data;
         private List<int> dataList;
-        private bool debug = true;
+        private bool debug = false;
+        private int barCount = 10000;//magic number
 
         public BmsData(string line)
         {
             this.BarNumber = 0;
             this.Channel = 0;
             this.data = string.Empty;
-            this.BarMagnitude = 0.0f;
+            this.BarMagnitude = 1.0f;
             this.dataList = new List<int>();
+            this.IsCorrectData = true;
             if (debug)
             {
                 System.Console.WriteLine(line.Substring(0, 1) + " == # ?");
@@ -35,7 +38,11 @@ namespace bmsPrototype
                 this.Channel = Int32.Parse(data[0].Substring(4, 2));
                 this.data = data[1];
                 InterpretBmsData();
-                printBmsData(); //for debug line
+                //printBmsData(); //for debug line
+            }
+            else
+            {
+                this.IsCorrectData = false;
             }
         }
 
@@ -43,7 +50,10 @@ namespace bmsPrototype
         {
             if (Channel == 1)
             {
-
+                if (this.data == "00")
+                {
+                    this.IsCorrectData = false; //this is empty data
+                }
             }
             else if (Channel == 2)//change bar count 
             {
@@ -57,6 +67,7 @@ namespace bmsPrototype
             {
                 if(this.data.Length % 2 == 0)
                 {
+                    //TODO data is int?
                     this.dataList = substringAtCount(this.data, 2);
                 }
             }
@@ -104,10 +115,10 @@ namespace bmsPrototype
         /// </summary>
         public void printBmsData()
         {
-            System.Console.WriteLine("--------------------");
             System.Console.WriteLine("CH: " + this.Channel.ToString());
             System.Console.WriteLine("BarNumber: " + this.BarNumber.ToString());
             System.Console.WriteLine("BarMagnitude: " + this.BarMagnitude.ToString());
+            System.Console.WriteLine("data: " + this.data);
             if (this.Objects != null)
             {
                 System.Console.WriteLine("Objects");
@@ -117,6 +128,23 @@ namespace bmsPrototype
                     System.Console.WriteLine("Object: " + ++objcount);
                     System.Console.WriteLine("Time: " + obj.Time);
                     System.Console.WriteLine("Data: " + obj.Data);
+                }
+            }
+            System.Console.WriteLine("--------------------");
+        }
+        /// <summary>
+        /// calculate object time after set ch2 magnitude data
+        /// </summary>
+        public void calcObjectTime(int time)
+        {
+            int divideNum = this.dataList.Count();
+            int num = 0;
+            if (divideNum != 0)
+            {
+                foreach(int data in this.dataList)
+                {
+                    Object obj = new Object(time + num*(barCount/divideNum), data);
+                    num++;
                 }
             }
         }

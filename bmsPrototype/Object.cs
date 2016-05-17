@@ -11,10 +11,10 @@ namespace bmsPrototype
         public int Time;
         public int Data;
 
-        public Object()
+        public Object(int time, int data)
         {
-            this.Time = 0;
-            this.Data = 0;
+            this.Time = time;
+            this.Data = data;
         }
     }
 }
