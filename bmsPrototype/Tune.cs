@@ -100,10 +100,27 @@ namespace bmsPrototype
                         }
                     }
                 }
+                /* calc time */
+                /*
+                int bar = 0;
+                int time = 0;
+                ListBmsData.Sort((a, b) => a.BarNumber - b.BarNumber);
+                foreach(BmsData tmp in ListBmsData)
+                {
+                    if (bar == tmp.BarNumber)
+                    {
+                        tmp.calcObjectTime(time);
+                    }
+                    else {
+                        time = tmp.calcObjectTime(time);
+                        bar++;
+                    }
+                }
+                */
                 /* check bms data */
                 foreach(BmsData tmp in ListBmsData)
                 {
-                    if(tmp.Channel > 1)
+                    if(tmp.BarNumber == 0)
                         tmp.printBmsData();
                 }
                 /* check wav data */

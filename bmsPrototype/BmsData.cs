@@ -99,13 +99,15 @@ namespace bmsPrototype
                 }
                 if(start + count > source.Length)
                 {
-                    if (Int32.TryParse(source.Substring(start), out j))
-                        substList.Add(Int32.Parse(source.Substring(start)));
+                    //if (Int32.TryParse(source.Substring(start), out j))
+                    //    substList.Add(Int32.Parse(source.Substring(start)));
+                    substList.Add(RadixConvert.ToInt32(source.Substring(start), 36));
                 }
                 else
                 {
-                    if (Int32.TryParse(source.Substring(start), out j))
-                        substList.Add(Int32.Parse(source.Substring(start, count)));
+                    //if (Int32.TryParse(source.Substring(start), out j))
+                    //    substList.Add(Int32.Parse(source.Substring(start, count)));
+                    substList.Add(RadixConvert.ToInt32(source.Substring(start, count), 36));
                 }
             }
             return substList;
@@ -119,6 +121,12 @@ namespace bmsPrototype
             System.Console.WriteLine("BarNumber: " + this.BarNumber.ToString());
             System.Console.WriteLine("BarMagnitude: " + this.BarMagnitude.ToString());
             System.Console.WriteLine("data: " + this.data);
+            System.Console.Write("dataList: ");
+            foreach(int i in this.dataList)
+            {
+                System.Console.Write(" " + i);
+            }
+            System.Console.WriteLine("");
             if (this.Objects != null)
             {
                 System.Console.WriteLine("Objects");
@@ -135,18 +143,20 @@ namespace bmsPrototype
         /// <summary>
         /// calculate object time after set ch2 magnitude data
         /// </summary>
-        public void calcObjectTime(int time)
+        public int calcObjectTime(int startTime)
         {
             int divideNum = this.dataList.Count();
             int num = 0;
+            int endTime = startTime + (int)(barCount*this.BarMagnitude);
             if (divideNum != 0)
             {
                 foreach(int data in this.dataList)
                 {
-                    Object obj = new Object(time + num*(barCount/divideNum), data);
+                    Object obj = new Object(startTime + num*(barCount/divideNum), data);
                     num++;
                 }
             }
+            return endTime;
         }
     }
 }
