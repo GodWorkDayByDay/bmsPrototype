@@ -15,12 +15,14 @@ namespace bmsPrototype
         PanelInfo PanelInfo;
         Tune Tune;
 
-        string loadStartTime, loadEndTime;
+        private string loadStartTime, loadEndTime, gameCountStr;
+        private int gameCount;
 
         public override void LoadContent()
         {
             /* init values */
             loadStartTime = loadEndTime = string.Empty;
+            this.gameCount = 0;
             /* for Load Content */
             xmlManager<PanelPlayer> panelPlayerLoader = new xmlManager<PanelPlayer>();
             PanelPlayer = panelPlayerLoader.Load("Load/PlayBMS/PanelPlayer.xml");
@@ -56,6 +58,9 @@ namespace bmsPrototype
                     loadEndTime = "LET: " + gameTime.TotalGameTime.ToString();
                 PanelInfo.Loading.IsActive = false;
                 PanelInfo.Loading.Alpha = 0.0f;
+                /* tune start */
+                gameCount += 80; //todo correct increment value
+                PanelPlayer.UpdateNoteList(gameCount, this.Tune);
             }
         }
 
@@ -63,6 +68,10 @@ namespace bmsPrototype
         {
             base.Draw(spriteBatch);
             PanelPlayer.Draw(spriteBatch);
+            if (!Tune.IsLoading)
+            {
+                PanelPlayer.DrawNoteList(spriteBatch);
+            }
             PanelInfo.Draw(spriteBatch);
             PanelInfo.DrawText(spriteBatch, loadStartTime, 4);
             PanelInfo.DrawText(spriteBatch, loadEndTime, 5);
@@ -73,6 +82,7 @@ namespace bmsPrototype
             PanelInfo.DrawText(spriteBatch, "#GENRE: " + Tune.Genre, 10);
             PanelInfo.DrawText(spriteBatch, "#BPM: " + Tune.Bpm.ToString(), 11);
             PanelInfo.DrawText(spriteBatch, "#RANK: " + Tune.Rank.ToString(), 12);
+            PanelInfo.DrawText(spriteBatch, "gameCount: " + this.gameCount.ToString(), 13);
         }
     }
 }

@@ -11,7 +11,7 @@ namespace bmsPrototype
         public int BarNumber;
         public int Channel;
         public float BarMagnitude; //for channel 02
-        public Object[] Objects; //this isnt here??
+        public List<Object> Objects; //this isnt here??
         public bool IsCorrectData; //this is correct BMS data line
         /* private */
         private string data;
@@ -26,6 +26,7 @@ namespace bmsPrototype
             this.data = string.Empty;
             this.BarMagnitude = 1.0f;
             this.dataList = new List<int>();
+            this.Objects = new List<Object>();
             this.IsCorrectData = true;
             if (debug)
             {
@@ -152,7 +153,11 @@ namespace bmsPrototype
             {
                 foreach(int data in this.dataList)
                 {
-                    Object obj = new Object(startTime + num*(barCount/divideNum), data);
+                    if (data != 0)
+                    {
+                        Object obj = new Object(startTime + num * (barCount / divideNum), data);
+                        this.Objects.Add(obj);
+                    }
                     num++;
                 }
             }

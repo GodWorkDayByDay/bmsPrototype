@@ -22,4 +22,14 @@
       <Y>10</Y>
     </Position>
   </Lane>
+  <NoteXList>
+    <CustomItem>3</CustomItem>
+    <CustomItem>46</CustomItem>
+    <CustomItem>69</CustomItem>
+    <CustomItem>88</CustomItem>
+    <CustomItem>113</CustomItem>
+    <CustomItem>132</CustomItem>
+    <CustomItem>156</CustomItem>
+    <CustomItem>175</CustomItem>
+  </NoteXList>
 </PanelPlayer>
